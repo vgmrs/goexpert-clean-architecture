@@ -23,6 +23,34 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 )
 
+func startDatabase(db *sql.DB) error {
+	_, err := db.Exec("CREATE DATABASE IF NOT EXISTS orders")
+	if err != nil {
+		return err
+	}
+
+	_, err = db.Exec("USE orders")
+	if err != nil {
+		return err
+	}
+
+	createTable := `
+        CREATE TABLE IF NOT EXISTS orders (
+            id VARCHAR(255) NOT NULL PRIMARY KEY,
+            price FLOAT NOT NULL,
+            tax FLOAT NOT NULL,
+            final_price FLOAT NOT NULL
+        );`
+	_, err = db.Exec(createTable)
+	if err != nil {
+		return err
+	}
+
+	fmt.Println("Database initialized with success")
+
+	return nil
+}
+
 func main() {
 	configs, err := configs.LoadConfig(".")
 	if err != nil {
@@ -34,6 +62,11 @@ func main() {
 		panic(err)
 	}
 	defer db.Close()
+
+	err = startDatabase(db)
+	if err != nil {
+		panic(err)
+	}
 
 	rabbitMQChannel := getRabbitMQChannel()
 
