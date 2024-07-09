@@ -61,7 +61,7 @@ func (suite *OrderRepositoryTestSuite) TestGivenOrderList_WhenHasOrdersSaved() {
 	err = repo.Save(order)
 	suite.NoError(err)
 
-	orders, err := repo.GetAll()
+	orders, err := repo.List()
 	suite.NoError(err)
 	suite.NotEmpty(orders)
 

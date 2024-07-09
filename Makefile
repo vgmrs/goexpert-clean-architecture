@@ -19,3 +19,6 @@ down:
 
 run:
 	@go run -C cmd/ordersystem main.go wire_gen.go
+
+test:
+	@go test ./...
