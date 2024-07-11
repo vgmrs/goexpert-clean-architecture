@@ -1,4 +1,4 @@
-.PHONY: install-proto install-grpc install-wire wire grpc gql run up down
+.PHONY: install-proto install-grpc install-wire install-evans wire grpc gql run up down
 
 install-proto:
 	@apt install -y protobuf-compiler
@@ -10,6 +10,9 @@ install-grpc:
 
 install-wire:
 	@go install github.com/google/wire/cmd/wire@latest
+
+install-evans:
+	@go install github.com/ktr0731/evans@latest
 
 wire:
 	@cd cmd/ordersystem && wire
@@ -30,6 +33,9 @@ down:
 
 run:
 	@go run -C cmd/ordersystem main.go wire_gen.go
+
+evans:
+	@evans -r repl
 
 test:
 	@go test ./...
