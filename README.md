@@ -3,10 +3,7 @@ Exercise Clean Architecture for postgraduate Go Expert
 
 ## Description
 
-TODO:
-- Generate Wire
-- Service ListOrders com GRPC
-- Query ListOrders GraphQL
+This application implements Clean Architecture structure in Golang, and offers a Order API available in REST, gRPC, GraphQL and RabbitMQ.
 
 ## Protocol Ports
 
