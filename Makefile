@@ -1,4 +1,4 @@
-.PHONY: install-proto install-grpc install-wire install-evans wire grpc gql run up down
+.PHONY: install-proto install-grpc install-wire install-evans wire grpc gql up down run evans test
 
 install-proto:
 	@apt install -y protobuf-compiler
