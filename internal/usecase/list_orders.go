@@ -23,6 +23,7 @@ func (l *ListOrdersUseCase) Execute() ([]OrderOutputDTO, error) {
 	}
 
 	var dto []OrderOutputDTO
+
 	for _, order := range orders {
 		dto = append(dto, OrderOutputDTO{
 			order.ID,
